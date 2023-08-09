@@ -1,0 +1,19 @@
+{
+	"users": [
+		{
+			"name": "Dawid",
+			"surname": "Kolodziej",
+			"reward": "$2000"
+		},
+		{
+			"name": "Justyna",
+			"surname": "Kolodziej",
+			"reward": "$5000"
+		},
+		{
+			"name": "Piotr",
+			"surname": "Kolodziej",
+			"reward": "$1000"
+		}
+	]
+}
