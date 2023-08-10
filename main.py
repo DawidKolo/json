@@ -1,7 +1,7 @@
 import json
 from fpdf import FPDF
 
-with open('data.json') as user_file:
+with open('data.json', encoding='utf-8') as user_file:
     file_contents = user_file.read()
 
 parsed_json = json.loads(file_contents)
