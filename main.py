@@ -1,5 +1,4 @@
 from flask import *
-import json
 from fpdf import FPDF
 import zipfile
 import glob
