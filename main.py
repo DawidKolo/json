@@ -3,6 +3,9 @@ from fpdf import FPDF
 import zipfile
 import glob
 import os
+import datetime
+
+calendar = datetime.datetime.now()
 
 app = Flask(__name__)
 
@@ -10,7 +13,6 @@ app = Flask(__name__)
 @app.after_request
 def delete_files(response):
     path = ".\\output\\"
-    print(os.listdir(".\\output"))
     for file in os.listdir(path):
         os.remove(os.path.join(path, file))
 
@@ -34,8 +36,19 @@ def create_pdf():
     with zipfile.ZipFile('files.zip', 'w') as f:
         for file in glob.glob('output/*'):
             f.write(file)
-    return send_file('files.zip')
+    return send_file('files.zip'), 200
+
+
+@app.route('/')
+def html_placeholder():
+    stamp_d = calendar.strftime("%d")
+    stamp_m = calendar.strftime("%B")
+    stamp_y = calendar.strftime("%Y")
+    time_h = calendar.strftime("%H")
+    time_m = calendar.strftime("%M")
+    time_s = calendar.strftime("%S")
+    return f"<p>Send json file, please.</p> {stamp_d} {stamp_m} {stamp_y} <br> {time_h} : {time_m} : {time_s}"
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
